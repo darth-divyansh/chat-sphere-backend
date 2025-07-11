@@ -19,12 +19,26 @@ const app = express();
 const PORT = process.env.PORT || 5001; // Change to 5001 to match frontend
 
 const __dirname = path.resolve();
+
+
+const allowedOrigins = [
+  "https://preeminent-narwhal-001378.netlify.app",
+  "http://localhost:3000",        // React dev server
+  "http://127.0.0.1:3000"         // Loopback address
+];
+
 app.use(
   cors({
-    origin: "https://preeminent-narwhal-001378.netlify.app",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    // allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
