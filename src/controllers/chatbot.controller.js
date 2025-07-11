@@ -1,7 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { config } from "dotenv";
 
-// 🔐 Replace with your actual API key
-const genAI = new GoogleGenerativeAI("AIzaSyDAI4wqLhAScKjbEP0hfDe0QKibC-jJn1k");
+config(); // Load environment variables from .env file
+
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 
 export const handleChat = async (req, res) => {
   const userMessage = req.body.message;
