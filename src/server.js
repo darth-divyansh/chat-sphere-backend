@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5001; // Change to 5001 to match frontend
 
 const __dirname = path.resolve();
 
-
+app.use(cookieParser());
 const allowedOrigins = [
   "https://preeminent-narwhal-001378.netlify.app",
   "http://localhost:5173",        // React dev server
@@ -43,7 +43,7 @@ app.use(
 );
 
 app.use(express.json());
-app.use(cookieParser());
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
