@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 5001; // Change to 5001 to match frontend
 const __dirname = path.resolve();
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://preeminent-narwhal-001378.netlify.app/",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
